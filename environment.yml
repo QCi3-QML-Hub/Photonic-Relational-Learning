@@ -1,0 +1,22 @@
+# Tested environment. Everything except Python comes from pip: mixing conda's OpenMP runtime with
+# pip's torch wheels crashes on macOS ("OMP: Error #15 ... libomp.dylib already initialized").
+#
+#   conda env create -f environment.yml
+#   conda activate cvrl
+#   pip install -e ".[dev]"
+name: cvrl
+channels:
+  - conda-forge
+dependencies:
+  - python=3.10
+  - pip
+  - pip:
+      - setuptools<81  # strawberryfields 0.23 imports pkg_resources
+      - numpy==2.2.6
+      - scipy==1.13.1
+      - torch==2.10.0
+      - strawberryfields==0.23.0
+      - thewalrus==0.21.0
+      - scikit-learn==1.7.2
+      - matplotlib==3.10.8
+      - tqdm==4.67.3

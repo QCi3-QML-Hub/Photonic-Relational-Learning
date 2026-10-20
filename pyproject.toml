@@ -1,0 +1,36 @@
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "cv_relational_learning"
+version = "0.1.0"
+description = "Code for 'Adaptive Relational Learning on Multi-instance Quantum Data with Photonic Processors' (arXiv:2609.17352)"
+readme = "README.md"
+requires-python = ">=3.10"
+authors = [{ name = "Marcin Jastrzebski" }]
+dependencies = [
+    "numpy",
+    "scipy",
+    "torch",
+    "strawberryfields==0.23.0",
+    "setuptools<81",  # strawberryfields 0.23 imports pkg_resources
+    "scikit-learn",
+    "matplotlib",
+    "tqdm",
+]
+
+[project.optional-dependencies]
+dev = ["pytest", "nbconvert", "nbformat", "ipykernel"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.pylint.format]
+max-line-length = 120
+
+[tool.ruff]
+line-length = 120
